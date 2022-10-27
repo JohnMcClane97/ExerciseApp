@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:StartApp.Viewmodels" 
+             xmlns:startapp="clr-namespace:StartApp" 
+             xmlns:startapp1="clr-namespace:StartApp.Models" 
+             x:DataType="viewmodels:MainViewModel"
+             x:Class="StartApp.MainPage">
+
+    <StackLayout
+        Spacing="0"
+        BackgroundColor="White">
+        <Frame 
+            BackgroundColor="Black" 
+            Padding="0" 
+            HeightRequest="60" 
+            CornerRadius="0">
+            <Label 
+                Text="My Tabata training"
+                FontSize="Title"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center"
+                TextColor="White"></Label>
+        </Frame>
+        <CollectionView
+            Margin="0"
+            BackgroundColor="Gray"
+            ItemsSource="{Binding ExerciseList}"
+            >
+            <CollectionView.ItemTemplate>
+                <DataTemplate 
+                    x:DataType="startapp1:TabataExercise">
+                    <startapp:TabataExerciseControl
+                        Exercise="{Binding .}"></startapp:TabataExerciseControl>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+
+</ContentPage>
