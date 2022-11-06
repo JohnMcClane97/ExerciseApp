@@ -1,38 +1,138 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:startapp="clr-namespace:StartApp" x:DataType="startapp:TabataExerciseControl"
-             x:Class="StartApp.TabataExerciseControl">
-  <ContentView.Content>
-        <Frame
-            CornerRadius="10"
-            Margin="10"
-            BackgroundColor="DarkOrange">
-            
-       
-      <StackLayout
-          HorizontalOptions="FillAndExpand"
-          VerticalOptions="FillAndExpand"
-          
-          Padding="10">
-            <Label 
-                x:Name="Name"
-                FontSize="Medium"
-                TextColor="Black"></Label>
-            <Label 
-                x:Name="Sets"
-                FontSize="Medium"
-                
-                TextColor="Black"></Label>
-            <Label 
-                x:Name="Cycles"
-                FontSize="Medium"
-                TextColor="Black"></Label>
-            <Label 
-                x:Name="RestBetweenSets"
-                FontSize="Medium"
-                
-                TextColor="Black"></Label>
-        </StackLayout>
-        </Frame>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+    xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    xmlns:startapp="clr-namespace:StartApp"
+    x:DataType="startapp:TabataExerciseControl"
+    x:Class="StartApp.TabataExerciseControl"
+    x:Name="Self">
+    <ContentView.Content>
+        <AbsoluteLayout>
+            <Frame
+                AbsoluteLayout.LayoutFlags="All"
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                CornerRadius="10"
+                Margin="10"
+                Padding="7"
+                BackgroundColor="DarkOrange">
+                <StackLayout
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand"
+                    Padding="10">
+                    <StackLayout
+                        Orientation="Horizontal">
+                        <Label
+                            x:Name="Name"
+                            FontSize="Medium"
+                            TextColor="Black"></Label>
+                        <Frame
+                            xct:TouchEffect.PressedScale="0.6"
+                            Padding="3"
+                            HorizontalOptions="EndAndExpand"
+                            BackgroundColor="Transparent">
+                            <ffimageloadingsvg:SvgCachedImage
+                                x:Name="playImage"
+                                Source="resource://StartApp.Resources.Svg.play.svg"
+                                HeightRequest="40"
+                                WidthRequest="40">
+                            </ffimageloadingsvg:SvgCachedImage>
+                        </Frame>
+                        <Frame
+                            xct:TouchEffect.PressedScale="0.6"
+                            HorizontalOptions="EndAndExpand"
+                            xct:TouchEffect.Command="{Binding Source={x:Reference Self}, Path=EditButtonPressedCommand}"
+                            Padding="3"
+                            BackgroundColor="Transparent">
+                            <ffimageloadingsvg:SvgCachedImage
+                                x:Name="moreImage"
+                                Source="resource://StartApp.Resources.Svg.more-vertical.svg"
+                                HeightRequest="40"
+                                WidthRequest="40">
+                            </ffimageloadingsvg:SvgCachedImage>
+                        </Frame>
+                    </StackLayout>
+                    <Label
+                        x:Name="Sets"
+                        FontSize="Medium"
+                        TextColor="Black"></Label>
+                    <Label
+                        x:Name="Cycles"
+                        FontSize="Medium"
+                        TextColor="Black"></Label>
+                    <Label
+                        x:Name="RestBetweenSets"
+                        FontSize="Medium"
+                        TextColor="Black"></Label>
+                </StackLayout>
+            </Frame>
+
+            <Frame
+                CornerRadius="5"
+                IsVisible="False"
+                AbsoluteLayout.LayoutFlags="All"
+                AbsoluteLayout.LayoutBounds="0.9,0.7,0.3,0.5"
+                x:Name="More"
+                BackgroundColor="Gray"
+                Padding="10,0">
+                <StackLayout>
+                    <StackLayout
+                        Orientation="Horizontal"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="CenterAndExpand">
+                        <Label
+                            Text="Edit"
+                            TextColor="White"
+                            FontSize="Medium"
+                            VerticalTextAlignment="Center"
+                            HorizontalTextAlignment="Center"
+                            HorizontalOptions="StartAndExpand"
+                            VerticalOptions="CenterAndExpand"></Label>
+                        <Frame
+                            Padding="0"
+                            BackgroundColor="Transparent">
+                            <ffimageloadingsvg:SvgCachedImage
+                                x:Name="EditImage"
+                                HorizontalOptions="EndAndExpand"
+                                HeightRequest="30"
+                                WidthRequest="30"
+                                Source="resource://StartApp.Resources.Svg.edit.svg">
+
+                            </ffimageloadingsvg:SvgCachedImage>
+                        </Frame>
+                    </StackLayout>
+
+                    <StackLayout
+                        Orientation="Horizontal"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="CenterAndExpand">
+                        <Label
+                            Text="Delete"
+                            TextColor="White"
+                            FontSize="Medium"
+                            VerticalTextAlignment="Center"
+                            HorizontalTextAlignment="Center"
+                            HorizontalOptions="StartAndExpand"
+                            VerticalOptions="CenterAndExpand"></Label>
+                        <Frame
+                            Padding="0"
+                            BackgroundColor="Transparent">
+                            <ffimageloadingsvg:SvgCachedImage
+                                x:Name="deleteImage"
+                                HorizontalOptions="EndAndExpand"
+                                HeightRequest="30"
+                                WidthRequest="30"
+                                Source="resource://StartApp.Resources.Svg.trash.svg">
+                            </ffimageloadingsvg:SvgCachedImage>
+                        </Frame>
+
+                    </StackLayout>
+
+                </StackLayout>
+            </Frame>
+        </AbsoluteLayout>
     </ContentView.Content>
 </ContentView>

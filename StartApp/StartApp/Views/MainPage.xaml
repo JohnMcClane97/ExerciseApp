@@ -15,7 +15,7 @@
             Padding="0" 
             HeightRequest="60" 
             CornerRadius="0">
-            <Label 
+            <Label
                 Text="My Tabata training"
                 FontSize="Title"
                 HorizontalTextAlignment="Center"

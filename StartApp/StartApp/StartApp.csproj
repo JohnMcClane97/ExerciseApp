@@ -11,8 +11,29 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\Svg\edit.svg" />
+    <None Remove="Resources\Svg\more-vertical.svg" />
+    <None Remove="Resources\Svg\play.svg" />
+    <None Remove="Resources\Svg\trash.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Svg\edit.svg" />
+    <EmbeddedResource Include="Resources\Svg\more-vertical.svg" />
+    <EmbeddedResource Include="Resources\Svg\play.svg" />
+    <EmbeddedResource Include="Resources\Svg\trash.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.14" />
     <PackageReference Include="Refractored.MvvmHelpers" Version="1.6.2" />
+    <PackageReference Include="SkiaSharp" Version="2.88.3" />
+    <PackageReference Include="Xamarin.CommunityToolkit" Version="2.0.5" />
+    <PackageReference Include="Xamarin.FFImageLoading" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.FFImageLoading.Svg" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.FFImageLoading.Svg.Forms" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.FFImageLoading.Transformations" Version="2.4.11.982" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2515" />
     <PackageReference Include="Xamarin.Essentials" Version="1.7.3" />
   </ItemGroup>
