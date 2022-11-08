@@ -1,4 +1,5 @@
 ﻿using StartApp.Models;
+using StartApp.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,12 +14,14 @@ namespace StartApp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TabataExerciseControl : ContentView
     {
-
         public static readonly BindableProperty ExerciseProperty =
             BindableProperty.Create("Exercise", typeof(TabataExercise), typeof(TabataExerciseControl), propertyChanged: OnExercisePropertyChanged);
 
         public static readonly BindableProperty EditButtonPressedProperty =
-            BindableProperty.Create("EditButtonPressedCommand", typeof(Command), typeof(TabataExerciseControl), propertyChanged: OnExercisePropertyChanged);
+            BindableProperty.Create("EditButtonPressedCommand", typeof(Command), typeof(TabataExerciseControl));
+
+        public static readonly BindableProperty PlayButtonPressedProperty =
+           BindableProperty.Create("PlayButtonPressedCommand", typeof(Command), typeof(TabataExerciseControl));
 
         private static void OnExercisePropertyChanged(BindableObject bindable, object oldValue, object newValue)
         {
@@ -62,28 +65,41 @@ namespace StartApp
             get => (Command)GetValue(EditButtonPressedProperty);
             set => SetValue(EditButtonPressedProperty, value);
         }
+        public Command PlayButtonPressedCommand 
+        {
+            get => (Command)GetValue(PlayButtonPressedProperty);
+            set => SetValue(PlayButtonPressedProperty, value);
+        }
+
         public TabataExerciseControl()
         {
             InitializeComponent();
+
+
             EditButtonPressedCommand = new Command( async () =>
             {
-                
-                if(!More.IsVisible)
-                {
-                    More.HeightRequest = 0;
-                    var heightAnimation = new Animation(x => { More.HeightRequest = x; });
-                    heightAnimation.Commit(More, "heightAnimation", 1000);
-                }
-                else
-                {
-                    var heightAnimation = new Animation(x => { More.HeightRequest = x; },100,0);
-                    heightAnimation.Commit(More, "heightAnimation", 1000, finished: (d, b) => 
-                    {
-                        More.IsVisible = false;
-                    });
-                }
+                More.IsVisible = !More.IsVisible;
+                //if(!More.IsVisible)
+                //{
+                //    More.HeightRequest = 0;
+                //    var heightAnimation = new Animation(x => { More.HeightRequest = x; });
+                //    heightAnimation.Commit(More, "heightAnimation", 1000);
+                //}
+                //else
+                //{
+                //    var heightAnimation = new Animation(x => { More.HeightRequest = x; },100,0);
+                //    heightAnimation.Commit(More, "heightAnimation", 1000, finished: (d, b) => 
+                //    {
+                //        More.IsVisible = false;
+                //    });
+                //}
                     
             });
+            PlayButtonPressedCommand = new Command(async () =>
+            {
+                await Navigation.PushAsync(new WorkoutView());
+            });
+            
         }
        
             

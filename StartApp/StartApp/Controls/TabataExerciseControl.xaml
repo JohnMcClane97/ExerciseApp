@@ -31,6 +31,7 @@
                             TextColor="Black"></Label>
                         <Frame
                             xct:TouchEffect.PressedScale="0.6"
+                            xct:TouchEffect.Command="{Binding Source={x:Reference Self}, Path=PlayButtonPressedCommand}"
                             Padding="3"
                             HorizontalOptions="EndAndExpand"
                             BackgroundColor="Transparent">

@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodels="clr-namespace:StartApp.Viewmodels"
+    xmlns:startapp="clr-namespace:StartApp"
+    xmlns:startapp1="clr-namespace:StartApp.Models"
+    xmlns:Controls="clr-namespace:StartApp.Controls"
+    NavigationPage.HasNavigationBar="false"
+    x:DataType="viewmodels:WorkoutViewModel"
+    x:Class="StartApp.Views.WorkoutView">
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <Controls:ExerciseTimerControl
+                Seconds="15"
+                BackgroundColor="Turquoise"
+                AbsoluteLayout.LayoutFlags="All"
+                AbsoluteLayout.LayoutBounds="0,0,1,0.6">
+                
+            </Controls:ExerciseTimerControl>
+            <!--<ListView
+                AbsoluteLayout.LayoutFlags="All"
+                AbsoluteLayout.LayoutBounds="0,1,1,0.4"
+                BackgroundColor="DarkOrange"></ListView>-->
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>
