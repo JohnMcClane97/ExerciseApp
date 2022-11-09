@@ -12,7 +12,8 @@
     <ContentPage.Content>
         <AbsoluteLayout>
             <Controls:ExerciseTimerControl
-                Seconds="15"
+                Seconds="5"
+                OnTimerFinished="{Binding OnTimerFinished}"
                 BackgroundColor="Turquoise"
                 AbsoluteLayout.LayoutFlags="All"
                 AbsoluteLayout.LayoutBounds="0,0,1,0.6">
