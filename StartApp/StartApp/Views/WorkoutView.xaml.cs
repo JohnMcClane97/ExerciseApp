@@ -17,6 +17,26 @@ namespace StartApp.Views
         {
             InitializeComponent();
             BindingContext = new WorkoutViewModel();
+
+            playImage.ReplaceStringMap.Clear();
+            playImage.ReplaceStringMap.Add("Stroke", "Black");
+            playImage.ReplaceStringMap.Add("fill", "Black");
+            playImage.ReloadImage();
+
+            pauseImage.ReplaceStringMap.Clear();
+            pauseImage.ReplaceStringMap.Add("Stroke", "Black");
+            pauseImage.ReplaceStringMap.Add("fill", "Black");
+            pauseImage.ReloadImage();
+
+            backImage.ReplaceStringMap.Clear();
+            backImage.ReplaceStringMap.Add("Stroke", "Black");
+            backImage.ReplaceStringMap.Add("fill", "Black");
+            backImage.ReloadImage();
+
+            forwardImage.ReplaceStringMap.Clear();
+            forwardImage.ReplaceStringMap.Add("Stroke", "Black");
+            forwardImage.ReplaceStringMap.Add("fill", "Black");
+            forwardImage.ReloadImage();
         }
     }
 }

@@ -5,6 +5,8 @@
     xmlns:viewmodels="clr-namespace:StartApp.Viewmodels"
     xmlns:startapp="clr-namespace:StartApp"
     xmlns:startapp1="clr-namespace:StartApp.Models"
+    xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
     xmlns:Controls="clr-namespace:StartApp.Controls"
     NavigationPage.HasNavigationBar="false"
     x:DataType="viewmodels:WorkoutViewModel"
@@ -12,17 +14,95 @@
     <ContentPage.Content>
         <AbsoluteLayout>
             <Controls:ExerciseTimerControl
-                Seconds="5"
+                Seconds="{Binding RestWorkTime}"
+                Paused="{Binding WorkoutIsPaused}"
                 OnTimerFinished="{Binding OnTimerFinished}"
                 BackgroundColor="Turquoise"
                 AbsoluteLayout.LayoutFlags="All"
                 AbsoluteLayout.LayoutBounds="0,0,1,0.6">
-                
+
             </Controls:ExerciseTimerControl>
             <!--<ListView
                 AbsoluteLayout.LayoutFlags="All"
                 AbsoluteLayout.LayoutBounds="0,1,1,0.4"
                 BackgroundColor="DarkOrange"></ListView>-->
+            <Frame
+                Padding="10"
+                BackgroundColor="Orange"
+                AbsoluteLayout.LayoutFlags="All"
+                AbsoluteLayout.LayoutBounds="0,1,1,0.1">
+                <AbsoluteLayout>
+                    <Frame
+                        xct:TouchEffect.PressedScale="0.5"
+                        BackgroundColor="Transparent"
+                        Padding="0"
+                        AbsoluteLayout.LayoutFlags="All"
+                        AbsoluteLayout.LayoutBounds="0,0,0.33,1">
+                        <ffimageloadingsvg:SvgCachedImage
+                            x:Name="backImage"
+                            Source="resource://StartApp.Resources.Svg.skip-back.svg">
+                        </ffimageloadingsvg:SvgCachedImage>
+                    </Frame>
+                    <Frame
+                        IsVisible="false"
+                        xct:TouchEffect.PressedScale="0.5"
+                        xct:TouchEffect.Command="{Binding PlayPauseCommand}"
+                        BackgroundColor="Transparent"
+                        Padding="0"
+                        AbsoluteLayout.LayoutFlags="All"
+                        AbsoluteLayout.LayoutBounds="0.5,0,0.33,1">
+                        <Frame.Triggers>
+                            <DataTrigger
+                                TargetType="Frame"
+                                Binding="{Binding WorkoutIsPaused}"
+                                Value="true">
+                                <Setter
+                                    Property="IsVisible"
+                                    Value="true"></Setter>
+
+                            </DataTrigger>
+                        </Frame.Triggers>
+                        <ffimageloadingsvg:SvgCachedImage
+                            x:Name="playImage"
+                            Source="resource://StartApp.Resources.Svg.play.svg">
+                        </ffimageloadingsvg:SvgCachedImage>
+                    </Frame>
+                    <Frame
+                        xct:TouchEffect.PressedScale="0.5"
+                        xct:TouchEffect.Command="{Binding PlayPauseCommand}"
+                        IsVisible="false"
+                        BackgroundColor="Transparent"
+                        Padding="0"
+                        AbsoluteLayout.LayoutFlags="All"
+                        AbsoluteLayout.LayoutBounds="0.5,0,0.33,1">
+                        <Frame.Triggers>
+                            <DataTrigger
+                                TargetType="Frame"
+                                Binding="{Binding WorkoutIsPaused}"
+                                Value="false">
+                                <Setter
+                                    Property="IsVisible"
+                                    Value="true"></Setter>
+
+                            </DataTrigger>
+                        </Frame.Triggers>
+                        <ffimageloadingsvg:SvgCachedImage
+                            x:Name="pauseImage"
+                            Source="resource://StartApp.Resources.Svg.pause.svg">
+                        </ffimageloadingsvg:SvgCachedImage>
+                    </Frame>
+                    <Frame
+                        BackgroundColor="Transparent"
+                        Padding="0"
+                        AbsoluteLayout.LayoutFlags="All"
+                        AbsoluteLayout.LayoutBounds="1,0,0.33,1">
+                        <ffimageloadingsvg:SvgCachedImage
+                            x:Name="forwardImage"
+                            Source="resource://StartApp.Resources.Svg.skip-forward.svg">
+                        </ffimageloadingsvg:SvgCachedImage>
+                    </Frame>
+                </AbsoluteLayout>
+            </Frame>
         </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>

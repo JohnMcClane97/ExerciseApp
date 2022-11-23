@@ -14,14 +14,20 @@
   <ItemGroup>
     <None Remove="Resources\Svg\edit.svg" />
     <None Remove="Resources\Svg\more-vertical.svg" />
+    <None Remove="Resources\Svg\pause.svg" />
     <None Remove="Resources\Svg\play.svg" />
+    <None Remove="Resources\Svg\skip-back.svg" />
+    <None Remove="Resources\Svg\skip-forward.svg" />
     <None Remove="Resources\Svg\trash.svg" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Resources\Svg\edit.svg" />
     <EmbeddedResource Include="Resources\Svg\more-vertical.svg" />
+    <EmbeddedResource Include="Resources\Svg\pause.svg" />
     <EmbeddedResource Include="Resources\Svg\play.svg" />
+    <EmbeddedResource Include="Resources\Svg\skip-back.svg" />
+    <EmbeddedResource Include="Resources\Svg\skip-forward.svg" />
     <EmbeddedResource Include="Resources\Svg\trash.svg" />
   </ItemGroup>
 

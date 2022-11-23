@@ -55,7 +55,8 @@ namespace StartApp.Controls
         public ExerciseTimerControl()
         {
             InitializeComponent();
-
+            _timerCanceletion = new CancellationTokenSource();
+            
         }
 
         private static void OnPausedPropertyChanged(BindableObject bindable, object oldValue, object newValue)
@@ -94,23 +95,21 @@ namespace StartApp.Controls
                 if (timerCancel.IsCancellationRequested)
                     return false;
 
-                view.InvalidateSurface();
-                control._millieSecondsPassed += 10;
-                if (control._millieSecondsPassed % 1000 == 0)
-                    control.SecondsLeft -= 1;
-
                 if (control.SecondsLeft == 0)
                 {
                     Vibration.Vibrate(600);
 
                     control.OnTimerFinished();
+                    control._millieSecondsPassed = 0;
                     return false;
                 }
-                else
-                {
-                    return true;
-                }
 
+                view.InvalidateSurface();
+                control._millieSecondsPassed += 10;
+                if (control._millieSecondsPassed % 1000 == 0)
+                    control.SecondsLeft -= 1;
+                
+                return true;
             });
         }
 
